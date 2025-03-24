@@ -1,4 +1,4 @@
-import { Injectable,BadRequestException,InternalServerErrorException} from '@nestjs/common';
+import { Injectable,BadRequestException,} from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import * as jwt from 'jsonwebtoken';
 @Injectable()

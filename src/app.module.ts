@@ -8,6 +8,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthModule } from './auth/auth.module';
 import { RoleGuard} from './auth/auth.role.guard';
 import { MulterModule } from '@nestjs/platform-express';
+import { TaskModule } from './task/task.module';
 
 
 
@@ -16,7 +17,8 @@ import { MulterModule } from '@nestjs/platform-express';
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
-    }),],
+    }),
+    TaskModule,],
    
     
   

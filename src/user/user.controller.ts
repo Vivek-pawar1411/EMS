@@ -1,9 +1,8 @@
-import { Controller, Post, Get, Body, UseGuards, Param, Delete,Patch, Put} from '@nestjs/common';
+import { Controller, Post, Get, Body, UseGuards, Param, Delete,Patch} from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { RoleGuard } from 'src/auth/auth.role.guard';
 import { Role } from 'src/auth/auth.role.decorator';
-import { FileInterceptor } from '@nestjs/platform-express';
 
 
 @Controller('user')
@@ -69,15 +68,6 @@ export class UserController {
         const{password,role}=body;
         return this.userService.updateall(parseInt(id),password,role);
     }
-
-
-
-
-
-
-
-  
-
 
 }
 
