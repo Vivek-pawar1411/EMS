@@ -79,22 +79,16 @@ async register(name: string, email: string, password: string, role: string) {
                   }
         }
        
-        
-        
-         async updateall(id:number,name:string,email:string,password:string,role:string){
+        async updateall (id:number,password:string,role:string){
             const result=await this.DatabaseService.query(
-                'UPDATE users SET name=?,email=?,password=?,role=? WHERE id=?',[id,name,email,password,role]);
-            if(result.affectedRows===0){
-                throw new BadRequestException('User not found');
-
-            }else{
-                return{
-                    message:'User detail updated',result};
-            }}
-
-
+                'UPDATE users SET password=?, role=? WHERE id=?',[password,role,id]);
+                if (result.affectedRows === 0) {
+                    throw new BadRequestException('User not found');
+                  } else{
+                    return { message: 'User updated successfully', result };
+                  }
             
         }
-
+    }
 
 

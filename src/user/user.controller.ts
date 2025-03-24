@@ -62,12 +62,14 @@ export class UserController {
     }
      
  //newly added
-    @Put('updateall/:id')
-    async updateall (@Param() param:({id:string}), @Body() body:{name:string,email:string,password:string,role:string}){
-        const  {id}=param;
-        const{name,email,password,role}=body
-        return this.userService.updateall(parseInt(id),name,email,password,role);
+
+    @Patch('updateall/:id')
+    async updateall(@Param() param:({id:string}),@Body() body: {password:string,role:string}){
+        const {id}=param;
+        const{password,role}=body;
+        return this.userService.updateall(parseInt(id),password,role);
     }
+
 
 
 
