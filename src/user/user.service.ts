@@ -57,9 +57,14 @@ async register(name: string, email: string, password: string, role: string) {
         async deletebyid(id:number){
             const result =await this.DatabaseService.query(
                 'DELETE from users where id=?',
-                [id],
-            );
-            return result;
+                [id] );
+
+            if (result.affected === 0) {
+                throw new BadRequestException('User not found');
+              } else{
+                return { message: 'User deleted successfully' };
+              }
+           
         }
         
        
