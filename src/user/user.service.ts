@@ -54,7 +54,7 @@ async register(name: string, email: string, password: string, role: string) {
         }
 
 
-        async deletebyid(id:number){
+        async deletebyid(id:number){                            //delete api
             const result =await this.DatabaseService.query(
                 'DELETE from users where id=?',
                 [id] );
