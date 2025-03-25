@@ -71,6 +71,8 @@ export class UserController {
         return this.userService.updateall(parseInt(id),password,role);
     }
 
+    
+
 }
 
 
