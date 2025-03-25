@@ -1,5 +1,8 @@
-import { Controller,Post,Get,Body,Param } from '@nestjs/common';
+import { Controller,Post,Get,Body,Param,Delete, UseGuards } from '@nestjs/common';
 import { TaskService } from './task.service';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { RoleGuard } from 'src/auth/auth.role.guard';
+import { Role } from 'src/auth/auth.role.decorator';
 
 
 @Controller('task')
@@ -14,6 +17,8 @@ export class TaskController {
     }
 
     @Get('taskall')
+    @UseGuards(AuthGuard,RoleGuard)
+    @Role('admin')
     async taskall() {
         return this.taskService.taskall();
     }
@@ -22,4 +27,11 @@ export class TaskController {
     async taskemp(@Param('id') id: number) {
         return this.taskService.taskemp(id);
     }
+
+    @Delete('deletetask/:id')
+    
+    async deletetask(@Param('id')id:number){
+        return this.taskService.deletetask(id);
+    }
+
 }

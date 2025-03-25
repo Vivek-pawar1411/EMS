@@ -29,4 +29,10 @@ export class TaskService {
         );
         return result;
     }
+
+    async deletetask(id:number){
+        const result =await this.DatabaseService.query(
+            'DELETE from tasks where id=?',[id],);
+        return { message: "Task Deleted Successfully", result };
+    }
 }

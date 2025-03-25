@@ -43,6 +43,7 @@ export class UserController {
 
 //delete by id
     @Delete('deletebyid/:id')
+    @UseGuards(AuthGuard)
     async deletebyid(@Param() Param: { id: number }) {
         const { id } = Param;
 
@@ -54,6 +55,7 @@ export class UserController {
     //update name and email
 
     @Patch('update/:id')
+    @UseGuards(AuthGuard)
     async updatebyid(@Param() Param:({id:string}),@Body() body: { name: string, email: string }) {
         const { id } = Param;
         const { name, email } = body;
